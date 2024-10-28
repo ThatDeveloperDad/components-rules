@@ -21,7 +21,8 @@ Add a project reference, and start building your rules.
 Defines an executable Rule that can be added to a collection of applicable rules or executed in an ad-hoc fashion.
 
 ### RuleDefinition
-A simple .Net class that can act as a DTO or basis for a Storage Model for Rule definitions for your system.
+A simple .Net class that can act as a DTO or basis for a Storage Model for Rule definitions for your system.  
+For each Rule you need to run, you create a RuleDefinition instance.  These instances are then passed to the RuleFactory to be converted into executuable Rules.
 
 ### RuleFactory
 Static .Net class with a BuildRule method that accepts a RuleDefinition instance and returns an instance of an ISimpleRule implementation.
