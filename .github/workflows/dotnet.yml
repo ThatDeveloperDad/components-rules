@@ -5,7 +5,7 @@ name: Build and Test RulesUtility on Feature Push and Pull-Request to main
 
 on:
   push:
-    branches: [ "feature/*" ]
+    branches: [ "feature/**" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Tdd.RulesUtility.sln
       working-directory: src
     - name: Build
       run: dotnet build --no-restore
