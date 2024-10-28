@@ -11,7 +11,11 @@ A Rule has a ComparisonConstant (which is the value that the Subject.Property mu
 
 This implementation supports the common Operation kinds against most of the primitive types avilable in .Net.
 
-## Code artifacts
+## To use this code:
+For now, just Clone or Fork the repository, and copy the RulesUtility folder into your own Solutions.
+Add a project reference, and start building your rules.
+
+## Points of Interest
 
 ### ISimpleRule
 Defines an executable Rule that can be added to a collection of applicable rules or exeuted in an ad-hoc fashion.
@@ -31,6 +35,4 @@ Coming soon.  It's only stubbed out here. ;)
    * Initially, the Effect will be some function that takes an action using the Subject instance if the Rule evaluates as false.  Not sure how I'll do that yet, but I have some ideas.
    * My idea here is that the Effect will add a function that returns a PropertyError when the Rule evaluates false.  This property error would be added to the ValidationResult and sent back to the caller after all Rules have run.  We'll see how this plays out.  Might have to get a little freaky in the Validation Engine's internals.
 
-## To use this code:
-For now, just Clone or Fork the repository, and copy the RulesUtility folder into your own Solutions.
-Add a project reference, and start building your rules.
+
