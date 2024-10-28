@@ -22,7 +22,12 @@ MyClass otherSampleClass = new()
 };
 
 // To clean up the output code, let's put those into a list.
-List<MyClass> subjects = new() { sampleClass, otherSampleClass };
+List<MyClass> subjects = new() 
+    { 
+        sampleClass, 
+        otherSampleClass,
+        new() { Name = "Garrosh Hellscream", BirthDate = new DateTime(1980, 1, 1) }
+    };
 
 // Now, we'll define a couple of rules.
 RuleDefinition nameIsArthas = new();
@@ -38,19 +43,36 @@ nameIsArthas.OperatorKindName = OperatorKinds.Equals.ToString();
 // Finally, we define the value to compare against.
 nameIsArthas.ComparisonConstant = "Arthas Menethil";
 
-// Same thing for the second rule, but let's use a different property & operator.
-RuleDefinition canBuyAle = new();
-canBuyAle.RuleName = "CanGoToTheTavern";
-canBuyAle.SubjectTypeName = typeof(MyClass).Name;
-canBuyAle.PropertyName = nameof(MyClass.Age);
-canBuyAle.PropertyTypeName = typeof(int).Name;
-canBuyAle.OperatorKindName = OperatorKinds.GreaterOrEquals.ToString();
-canBuyAle.ComparisonConstant = 21;
+// Same thing for the second rule, 
+// but let's use a different property & operator.
+// We'll also use a different constructor.
+RuleDefinition canBuyAle = new
+    (
+        ruleName: "CanGoToTheTavern",
+        subjectTypeName: typeof(MyClass).Name,
+        propertyName: nameof(MyClass.Age),
+        operatorKindName: OperatorKinds.GreaterOrEquals.ToString(),
+        comparisonConstant: 21,
+        propertyTypeName: typeof(int).Name
+    );
+
+// One more example, showing the alternate constructor.
+// This constructor is best used for ad-hoc rule definitions
+// created inside your code.  (You can's serialize or Transmit Type parmeters.)
+RuleDefinition onlyGarrosh = new
+    (
+        ruleName: "IsGarroshHellscream",
+        subjectType: typeof(MyClass),
+        propertyName: nameof(MyClass.Name),
+        operatorKind: OperatorKinds.Equals,
+        comparisonConstant: "Garrosh Hellscream"
+    );
 
 // We create executable instances of the RuleDefinitions by
 // passing those definitions into the RuleFactory.
 ISimpleRule isLichKing = RuleFactory.BuildRule(nameIsArthas);
 ISimpleRule canGoToTavern = RuleFactory.BuildRule(canBuyAle);
+ISimpleRule feelsGreatAboutTheramore = RuleFactory.BuildRule(onlyGarrosh);
 
 // Now, we can Execute them.
 foreach(MyClass subject in subjects)
@@ -58,8 +80,10 @@ foreach(MyClass subject in subjects)
     // We pass the subject into the Execute method.
     string isTheLichKing = isLichKing.Execute(subject)?"is":"is not";
     string tavernOrder = canGoToTavern.Execute(subject)?"Here's your icy cold beer, your unholiness.":"Would you like some milk, youngster?";
-
+    string theramoreReaction = feelsGreatAboutTheramore.Execute(subject)?"Destroying Theramore will Make the Horde Great Again!":"He's kinda mad about Theramore.";
+    
     Console.WriteLine($"{subject.Name} {isTheLichKing} the Lich King.");
     Console.WriteLine(tavernOrder);
+    Console.WriteLine(theramoreReaction);
     Console.WriteLine();
 }
