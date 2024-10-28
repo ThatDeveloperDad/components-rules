@@ -22,8 +22,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore Tdd.RulesUtility.sln
-      working-directory: src
+      run: dotnet restore src/Tdd.RulesUtility.sln
     - name: Build
       run: dotnet build --no-restore
       working-directory: src
