@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevDad.RulesUtility", "DevD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevDad.RulesUtility.Tests", "DevDad.RulesUtility.Tests\DevDad.RulesUtility.Tests.csproj", "{FBD0B79B-0508-45B6-AE48-39437CD88BD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevDad.ValidationEngine", "DevDad.ValidationEngine\DevDad.ValidationEngine.csproj", "{AC70B1B2-32F5-48A4-B5D8-2D9B857900C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FBD0B79B-0508-45B6-AE48-39437CD88BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBD0B79B-0508-45B6-AE48-39437CD88BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBD0B79B-0508-45B6-AE48-39437CD88BD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC70B1B2-32F5-48A4-B5D8-2D9B857900C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC70B1B2-32F5-48A4-B5D8-2D9B857900C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC70B1B2-32F5-48A4-B5D8-2D9B857900C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC70B1B2-32F5-48A4-B5D8-2D9B857900C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
