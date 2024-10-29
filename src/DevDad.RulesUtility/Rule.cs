@@ -38,6 +38,10 @@ internal class Rule<T, V>:ISimpleRule
         return evaluationResult;
     }
 
+    public string SubjectTypeName => RuleAppliesTo.Name;
+
+    
+
     private bool Evaluate(V testValue)
     {
         return Expression.Evaluate(testValue, BaseValue);

@@ -10,4 +10,7 @@ public interface ISimpleRule
     /// <param name="testObject"></param>
     /// <returns></returns>
     bool Execute(object testObject);
+
+    string SubjectTypeName {get;}
+    string PropertyName {get;}
 }

@@ -6,12 +6,17 @@ public class ValidationResult<T>
 {
     private List<PropertyError> _errors = new();
 
-    public ValidationResult(T payload, string errorMessage)
+    public ValidationResult(T payload)
     {
         Payload = payload;
     }
 
     public T Payload { get; }
-    public bool IsValid => _errors.Count == 0;
+    public bool IsValid => _errors.Count(e=> e.Severity == PropertyErrorSeverity.Error) == 0;
     public IReadOnlyCollection<PropertyError> Errors => Errors;
+
+    public void AddError(PropertyError error)
+    {
+        _errors.Add(error);
+    }
 }
