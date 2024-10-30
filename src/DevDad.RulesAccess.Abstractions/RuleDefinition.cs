@@ -5,7 +5,7 @@ namespace DevDad.RulesAccess.Abstractions;
 /// <summary>
 /// Defines a single rule that is accessed by a RulesAccess service.
 /// </summary>
-public class RuleDefinition
+public class RuleDefinition : IRuleResource
 {
     /// <summary>
     /// Default constructor for RuleDefinition.  This is required for serialization.  Do not use this constructor in your code.

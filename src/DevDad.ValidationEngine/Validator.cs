@@ -1,5 +1,5 @@
 using System;
-using DevDad.RulesAccess.Abstractions;
+using Storage = DevDad.RulesAccess.Abstractions;
 using DevDad.RulesUtility;
 
 namespace DevDad.ValidationEngine;
@@ -13,10 +13,10 @@ public class Validator : IValidator
         
     }
 
-    public Validator(IRulesAccess rulesAccess)
+    public Validator(Storage.IRulesAccess rulesAccess, IEnumerable<Type> subjectTypes)
     {
         //TODO: use the injected rulesAccess component to load the rules and populate the _ruleSets dictionary.
-
+        InitializeRulesets(rulesAccess, subjectTypes);
     }
 
     /// <summary>
@@ -56,6 +56,43 @@ public class Validator : IValidator
         }
 
         return result;
+    }
+
+    private void InitializeRulesets(Storage.IRulesAccess rulesAccess, IEnumerable<Type> subjectTypes)
+    {
+        var subjectTypeNames = subjectTypes.Select(t => t.Name);
+        IEnumerable<Storage.ValidationRuleDefinition> ruleDefinitions = rulesAccess.LoadRules<Storage.ValidationRuleDefinition>(subjectTypeNames);
+
+        foreach(Storage.ValidationRuleDefinition ruleDefinition in ruleDefinitions)
+        {
+            string activityContext = ruleDefinition.ActivityContext ?? "All";
+            string failureMessage = ruleDefinition.FailureMessage ?? "";
+            Storage.RuleDefinition? storageDefinition = ruleDefinition.RuleDefinition;
+
+            RuleDefinition utilityDefinition = 
+            new(
+                ruleName: storageDefinition?.RuleName ?? "",
+                subjectTypeName: storageDefinition?.SubjectTypeName ?? "",
+                propertyTypeName: storageDefinition?.PropertyTypeName ?? "",
+                propertyName: storageDefinition?.PropertyName ?? "",
+                operatorKindName: storageDefinition?.OperatorKindName ?? "",
+                comparisonConstant: storageDefinition?.ComparisonConstant ?? ""
+            );
+            
+            ISimpleRule? innerRule = RuleFactory.BuildRule(utilityDefinition);
+
+            ValidationRule rule = new(innerRule, failureMessage);
+            
+            string ruleSetKey = $"{ruleDefinition.SubjectTypeName}|{activityContext}";
+            if(_ruleSets.TryGetValue(ruleSetKey, out IEnumerable<ValidationRule>? ruleSet))
+            {
+                _ruleSets[ruleSetKey] = ruleSet.Append(rule);
+            }
+            else
+            {
+                _ruleSets[ruleSetKey] = new List<ValidationRule> { rule };
+            }
+        }
     }
 }
 

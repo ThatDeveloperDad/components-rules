@@ -6,7 +6,7 @@ namespace DevDad.RulesAccess.Abstractions;
 /// Defines a single validations rule that is accessed by a RulesAccess service.
 /// It associates a RuleDefinition with an ActivityContext and a FailureMessage.
 /// </summary>
-public record ValidationRuleDefinition
+public record ValidationRuleDefinition : IRuleResource
 {
 
     public ValidationRuleDefinition() { }

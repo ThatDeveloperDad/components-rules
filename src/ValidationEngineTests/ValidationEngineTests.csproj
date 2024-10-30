@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DevDad.ValidationEngine\DevDad.ValidationEngine.csproj" />
     <ProjectReference Include="..\DevDad.RulesUtility\DevDad.RulesUtility.csproj" />
+    <ProjectReference Include="..\DevDad.RulesAccess.Abstractions\DevDad.RulesAccess.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
