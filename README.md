@@ -31,9 +31,10 @@ Static .Net class with a BuildRule method that accepts a RuleDefinition instance
 A simple console application that imports RulesUtility and demonstrates the construction and execution of these concepts.
 
 ### ValidationEngine
-Coming soon.  It's only stubbed out here. ;)
- * As I work out the Validation Engine, i'll be adding Effects to the Rule concept.
-   * Initially, the Effect will be some function that takes an action using the Subject instance if the Rule evaluates as false.  Not sure how I'll do that yet, but I have some ideas.
-   * My idea here is that the Effect will add a function that returns a PropertyError when the Rule evaluates false.  This property error would be added to the ValidationResult and sent back to the caller after all Rules have run.  We'll see how this plays out.  Might have to get a little freaky in the Validation Engine's internals.
+The Validation Engine that I've implemented, here "rhymes with" the RulesUtility.  That is, the public contract on that Engine class is very narrow.  
 
+It exposes a single generic method:  
+**Validate<T>(T subjectInstance, string? activityContext = null) returns ValidationResult<T>**  
 
+In this case, "T" represents the Type that you'll be validating with this method.
+Unlike the RulesUtility, which returns a bool from each Rule execution, the Validator returns a ValidationResult<T>, which wraps the Subject instance, and provides a collection of PropertyError objects that can be logged locally, and transmitted back to whichever client requested the use case we're executing.
