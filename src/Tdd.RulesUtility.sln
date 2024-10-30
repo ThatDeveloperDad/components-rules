@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevDad.ValidationEngine", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsole", "SampleConsole\SampleConsole.csproj", "{F306A33E-121E-48BB-8DEB-C0E52D02E96D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationEngineTests", "ValidationEngineTests\ValidationEngineTests.csproj", "{5C906918-256B-4BBC-909E-5BFE01585FE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevDad.RulesAccess.Abstractions", "DevDad.RulesAccess.Abstractions\DevDad.RulesAccess.Abstractions.csproj", "{7AFA3CB3-2340-4E92-AC77-BA74ABEB8898}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{F306A33E-121E-48BB-8DEB-C0E52D02E96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F306A33E-121E-48BB-8DEB-C0E52D02E96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F306A33E-121E-48BB-8DEB-C0E52D02E96D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C906918-256B-4BBC-909E-5BFE01585FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C906918-256B-4BBC-909E-5BFE01585FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C906918-256B-4BBC-909E-5BFE01585FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C906918-256B-4BBC-909E-5BFE01585FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AFA3CB3-2340-4E92-AC77-BA74ABEB8898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFA3CB3-2340-4E92-AC77-BA74ABEB8898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AFA3CB3-2340-4E92-AC77-BA74ABEB8898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AFA3CB3-2340-4E92-AC77-BA74ABEB8898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

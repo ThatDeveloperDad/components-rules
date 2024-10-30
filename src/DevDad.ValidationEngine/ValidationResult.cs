@@ -12,8 +12,12 @@ public class ValidationResult<T>
     }
 
     public T Payload { get; }
+    
     public bool IsValid => _errors.Count(e=> e.Severity == PropertyErrorSeverity.Error) == 0;
-    public IReadOnlyCollection<PropertyError> Errors => Errors;
+    
+    public bool HasWarnings => _errors.Count(e=> e.Severity == PropertyErrorSeverity.Warning) > 0;
+
+    public IReadOnlyCollection<PropertyError> Errors => _errors.AsReadOnly();
 
     public void AddError(PropertyError error)
     {

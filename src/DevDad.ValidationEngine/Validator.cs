@@ -1,4 +1,5 @@
 using System;
+using DevDad.RulesAccess.Abstractions;
 using DevDad.RulesUtility;
 
 namespace DevDad.ValidationEngine;
@@ -9,9 +10,22 @@ public class Validator : IValidator
 
     public Validator()
     {
-        //TODO:  We need to populate the _ruleSets with RuleDefinitions that come from ????
+        
     }
 
+    public Validator(IRulesAccess rulesAccess)
+    {
+        //TODO: use the injected rulesAccess component to load the rules and populate the _ruleSets dictionary.
+
+    }
+
+    /// <summary>
+    /// Executes the set of rules that apply to the given subject payload and activityContext.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="payload"></param>
+    /// <param name="activityContext"></param>
+    /// <returns></returns>
     public ValidationResult<T> Validate<T>(T payload, string? activityContext = null)
     {
         ValidationResult<T> result = new ValidationResult<T>(payload);

@@ -6,12 +6,13 @@ public record class PropertyError
     {
         PropertyName = propertyName;
         ErrorMessage = errorMessage;
+        Severity = severity;
     }
 
-    public string PropertyName { get; }
-    public string ErrorMessage { get; }
+    public string PropertyName { get; init; }
+    public string ErrorMessage { get; init; }
 
-    public PropertyErrorSeverity Severity { get; set; }
+    public PropertyErrorSeverity Severity { get; init; }
 }
 
 public enum PropertyErrorSeverity

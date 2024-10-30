@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevDad.RulesUtility\DevDad.RulesUtility.csproj" />
+    <ProjectReference Include="..\DevDad.RulesAccess.Abstractions\DevDad.RulesAccess.Abstractions.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
