@@ -30,7 +30,7 @@ Static .Net class with a BuildRule method that accepts a RuleDefinition instance
 ### SampleConsole.csproj
 A simple console application that imports RulesUtility and demonstrates the construction and execution of these concepts.
 
-### ValidationEngine
+### ValidationEngine  (Engine component)
 The Validation Engine that I've implemented, here "rhymes with" the RulesUtility.  That is, the public contract on that Engine class is very narrow.  
 
 It exposes a single generic method:  
@@ -38,3 +38,8 @@ It exposes a single generic method:
 
 In this case, "T" represents the Type that you'll be validating with this method.
 Unlike the RulesUtility, which returns a bool from each Rule execution, the Validator returns a ValidationResult<T>, which wraps the Subject instance, and provides a collection of PropertyError objects that can be logged locally, and transmitted back to whichever client requested the use case we're executing.
+
+### RulesAccess.Abstractions (ResourceAccess component)
+This project defines the behavior that a RulesAccess component must expose, as well as the public representations of the Resources it controls.
+This project does NOT implement any storage mechanism for your rules.
+An example implementation against a hardcoded, in-memory dictionary of ValidationRules for testing can be seen in the ValidationEngineTests project.
